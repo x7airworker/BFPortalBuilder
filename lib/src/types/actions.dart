@@ -1,21 +1,13 @@
 import 'package:bfportalbuilder/core.dart';
+import 'package:bfportalbuilder/src/components/components.dart';
 
 class Message extends Block {
   final String _str;
   Message(this._str) : super('Message');
 }
 
-class DisplayNotificationMessage extends FunctionCallBlock {
-  final Message _message;
-  final Block _target;
-
-  DisplayNotificationMessage(this._message, this._target) : super('ShowNotificationMessage');
-
-  @override
-  generate(Context context) {
-    pushArgument(context, _message);
-    pushArgument(context, _target);
-
-    return super.generate(context);
-  }
-}
+// User interface
+FunctionBlock ClearAllCustomMessages(Block target) => FunctionBlock('ClearAllCustomMessages', [target]);
+FunctionBlock DisplayGameModeMessage(Message message, Block target) => FunctionBlock('DisplayGameModeMessage', [message, target]);
+FunctionBlock DisplayHighlightedWorldLogMessage(Message message, Block target) => FunctionBlock('DisplayHighlightedWorldLogMessage', [message, target]);
+FunctionBlock DisplayNotificationMessage(Message message, Block target) => FunctionBlock('ShowNotificationMessage', [message, target]);
