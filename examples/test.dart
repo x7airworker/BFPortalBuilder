@@ -5,6 +5,8 @@ class SimpleComponent extends Component {
   generate(Context context) {
       return Rule(name: "Test Rule", event: Event.OnGameModeStarted, child: [
         ClearAllCustomMessages(),
+        ClearAllCustomMessages(),
+        DisplayNotificationMessage(Message("bruh")),
         ClearAllCustomMessages()
       ]);
   }

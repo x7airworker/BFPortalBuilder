@@ -25,10 +25,23 @@ abstract class XmlComponent extends Component {
    * This will resolve <next> elements in blocks
    */
   genBlocks(Context context, List<Component> blocks) {
-    var frag = xml.buildFragment();
+    var generated = List.of(blocks
+        .map((c) => c.generate(context))
+        .map((r) => r is XmlBuilder ? r.buildFragment() : throw Exception("Type should be XmlBuilder!")));
 
-    var generated = blocks.map((c) => c.generate(context)).map((r) => r is XmlBuilder ? r.buildFragment() : r);
+    var rootElement = generated.removeAt(0);
 
-    return generated;
+    generated = List.of(generated.map((x) {
+      var builder = XmlBuilder();
+      builder.element("next", nest: x);
+      return builder.buildFragment();
+    }));
+
+    generated.fold(rootElement.firstChild, (previousValue, element) {
+      (previousValue as XmlNode).children.add(element);
+      return previousValue.findElements("next").last.firstChild;
+    }); // hacky ik
+
+    return rootElement;
   }
 }
