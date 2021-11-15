@@ -1,4 +1,5 @@
 import 'package:bfportalbuilder/core.dart';
+import 'package:bfportalbuilder/src/types/literals.dart';
 
 class SimpleComponent extends Component {
   @override
@@ -6,7 +7,11 @@ class SimpleComponent extends Component {
       return Rule(name: "Test Rule", event: Event.OnPlayerDeployed, child: [
         DisplayNotificationMessage(Message("Hello {}!", context.eventPlayer)),
         Wait(5000),
-        ClearAllCustomMessages()
+        If(Boolean.TRUE, then: [
+          ClearAllCustomMessages()
+        ]).Else([
+          DisplayGameModeMessage(Message("Never executed :)"))
+        ])
       ]);
   }
 }

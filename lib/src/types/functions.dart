@@ -1,40 +1,14 @@
 import 'package:bfportalbuilder/core.dart';
 import 'package:bfportalbuilder/src/components/components.dart';
 
-// Literals
-
-class _Text extends Block {
-  String _text;
-
-  _Text(String this._text) : super('Text');
-
-  @override
-  generate(Context context) {
-    genField('TEXT', _text);
-
-    return super.generate(context);
-  }
-}
-
-class _Number extends Block {
-  double _value;
-
-  _Number(double this._value) : super('Number');
-
-  @override
-  generate(Context context) {
-    genField('NUM', _value.toString());
-
-    return super.generate(context);
-  }
-}
+import 'literals.dart';
 
 class Message extends FunctionBlock {
   dynamic param1;
   dynamic param2;
   dynamic param3;
 
-  Message(String template, [dynamic this.param1, dynamic this.param2, dynamic this.param3]) : super('Message', [_Text(template)]);
+  Message(String template, [dynamic this.param1, dynamic this.param2, dynamic this.param3]) : super('Message', [Text(template)]);
 
   @override
   generate(Context context) {
@@ -50,7 +24,9 @@ class Message extends FunctionBlock {
 
   Block _makeParam (dynamic input) {
     if (input is String)
-      return _Text(input);
+      return Text(input);
+    else if (input is int || input is double)
+      return Number(input);
     else if (input is Block)
       return input;
 
@@ -65,4 +41,6 @@ FunctionBlock DisplayHighlightedWorldLogMessage(Message message, [Block? target]
 FunctionBlock DisplayNotificationMessage(Message message, [Block? target]) => FunctionBlock('DisplayNotificationMessage', [message, target]);
 
 // Logic
-FunctionBlock Wait(double ms) => FunctionBlock('Wait', [_Number(ms)]);
+FunctionBlock Wait(double ms) => FunctionBlock('Wait', [Number(ms)]);
+
+FunctionBlock And(Block first, Block second) => FunctionBlock('And', [first, second]);
