@@ -4,7 +4,8 @@ class SimpleComponent extends Component {
   @override
   generate(Context context) {
       return Rule(name: "Test Rule", event: Event.OnGameModeStarted, child: [
-          DisplayNotificationMessage(Message("Hello World!"), context.eventPlayer)
+        ClearAllCustomMessages(),
+        ClearAllCustomMessages()
       ]);
   }
 }

@@ -2,7 +2,7 @@ import 'package:bfportalbuilder/core.dart';
 import 'package:xml/xml.dart';
 
 class FunctionBlock extends Block {
-    List<Block> arguments = <Block>[];
+    List<Block?> arguments = <Block?>[];
 
     FunctionBlock(String name, this.arguments) : super(name);
 
@@ -11,8 +11,10 @@ class FunctionBlock extends Block {
         var count = 0;
 
         arguments.forEach((element) {
-            xml.element('value', nest: (element.generate(context) as XmlBuilder).buildFragment(), attributes: {'name': "VALUE-$count"});
-            count++;
+            if (element != null) {
+                xml.element('value', nest: (element.generate(context) as XmlBuilder).buildFragment(), attributes: {'name': "VALUE-$count"});
+                count++;
+            }
         });
 
         return super.generate(context);

@@ -24,8 +24,8 @@ class Rule extends Block {
     genStatement('CONDITIONS', () {
 
     });
-    var actions = child.map((c) => c.generate(context)).map((r) => r is XmlBuilder ? r.buildFragment() : r);
-    genStatement('ACTIONS', actions);
+
+    genStatement('ACTIONS', genBlocks(context, child));
 
     return super.generate(context);
   }

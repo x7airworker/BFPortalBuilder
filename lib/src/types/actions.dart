@@ -7,7 +7,7 @@ class Message extends Block {
 }
 
 // User interface
-FunctionBlock ClearAllCustomMessages(Block target) => FunctionBlock('ClearAllCustomMessages', [target]);
-FunctionBlock DisplayGameModeMessage(Message message, Block target) => FunctionBlock('DisplayGameModeMessage', [message, target]);
-FunctionBlock DisplayHighlightedWorldLogMessage(Message message, Block target) => FunctionBlock('DisplayHighlightedWorldLogMessage', [message, target]);
-FunctionBlock DisplayNotificationMessage(Message message, Block target) => FunctionBlock('ShowNotificationMessage', [message, target]);
+FunctionBlock ClearAllCustomMessages([Block? target]) => FunctionBlock('ClearAllCustomMessages', [target]);
+FunctionBlock DisplayGameModeMessage(Message message, [Block? target]) => FunctionBlock('DisplayGameModeMessage', [message, target]);
+FunctionBlock DisplayHighlightedWorldLogMessage(Message message, [Block? target]) => FunctionBlock('DisplayHighlightedWorldLogMessage', [message, target]);
+FunctionBlock DisplayNotificationMessage(Message message, [Block? target]) => FunctionBlock('DisplayNotificationMessage', [message, target]);
