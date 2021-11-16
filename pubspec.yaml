@@ -1,5 +1,7 @@
 name: bfportalbuilder
 version: "1.0.0"
+description: A builder for Battlefield 2042 Portal
+repository: https://github.com/x7airworker/BFPortalBuilder
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
