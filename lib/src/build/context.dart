@@ -2,9 +2,9 @@ import 'package:bfportalbuilder/core.dart';
 import 'package:bfportalbuilder/src/build/options.dart';
 
 class Context {
-    Block eventPlayer = Block("EventPlayer");
-    Block eventOtherPlayer = Block("EventOtherPlayer");
-    Block eventTeam = Block("EventTeam");
+    final Block eventPlayer = Block("EventPlayer");
+    final Block eventOtherPlayer = Block("EventOtherPlayer");
+    final Block eventTeam = Block("EventTeam");
     Options options;
 
 
