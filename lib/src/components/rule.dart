@@ -2,7 +2,6 @@ import 'package:bfportalbuilder/core.dart';
 import 'package:bfportalbuilder/src/build/context.dart';
 import 'package:bfportalbuilder/src/components/component.dart';
 import 'package:bfportalbuilder/src/types/events.dart';
-import 'package:xml/xml.dart';
 
 class Rule extends Block {
   String name;

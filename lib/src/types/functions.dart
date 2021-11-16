@@ -44,3 +44,6 @@ FunctionBlock DisplayNotificationMessage(Message message, [Block? target]) => Fu
 FunctionBlock Wait(double ms) => FunctionBlock('Wait', [Number(ms)]);
 
 FunctionBlock And(Block first, Block second) => FunctionBlock('And', [first, second]);
+
+final Block Continue = Block('Continue');
+final Block Break = Block('Break');

@@ -13,7 +13,7 @@ class SimpleComponent extends Component {
           DisplayGameModeMessage(Message("Never executed :)"))
         ]),
         While(Boolean.TRUE, then: [
-            ClearAllCustomMessages()
+            ClearAllCustomMessages(),
         ])
       ]);
   }
